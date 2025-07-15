@@ -1,0 +1,64 @@
+<html>
+    <head>
+        <title>My Web Page</title>
+        <link rel="stylesheet" href="styles.css">
+        <script src="script.js" defer></script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Calculate the perfect coffee ratio with our easy-to-use calculator. Input your coffee amount or water amount and get the other value instantly.">
+        <meta name="keywords" content="Coffee">
+        <meta name="author" content="Andy Smith">
+        <link rel="icon" href="favicon.ico" type="image/x-icon">
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    </head>
+    <body>
+        <h1>Coffee Ratio Calculator</h1>
+        <p>Enter either the amount of coffee or water, and the other value will be calculated automatically.</p>
+        <form id="coffee-form">
+            <div id="error-message" style="color: red;"></div>
+            <div>
+                <label for="coffee-ratio">Ratio</label>
+                <select name="ratio" id="coffee-ratio">
+                    <option value="1/13">1:13</option>
+                    <option value="1/14">1:14</option>
+                    <option value="1/15">1:15</option>
+                    <option value="1/16" selected>1:16</option>
+                    <option value="1/17">1:17</option>
+                    <option value="1/18">1:18</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="coffee-amount">Coffee Amount (g):</label>
+                <input type="number" id="coffee-amount" name="coffee-amount">
+            </div>
+            <div>
+                <label for="water-amount">Water Amount (ml):</label>
+                <input type="number" name="water-amount" id="water-amount">
+            </div>
+
+            <button type="submit">Calculate</button>
+        </form>
+    </body>
+    <script>
+        document.getElementById('coffee-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const ratio = document.getElementById('coffee-ratio').value;
+            const coffeeAmount = parseFloat(document.getElementById('coffee-amount').value);
+            const waterInputAmount = parseFloat(document.getElementById('water-amount').value);
+            if(coffeeAmount > 0) {
+                document.getElementById('error-message').innerText = '';
+                const [numerator, denominator] = ratio.split('/').map(Number);
+                const waterAmount = (coffeeAmount * denominator) / numerator;
+                document.getElementById('water-amount').value = waterAmount.toFixed(2);
+            } else if(waterInputAmount > 0) {
+                document.getElementById('error-message').innerText = '';
+                const [numerator, denominator] = ratio.split('/').map(Number);
+                const coffeeAmountCalculated = (waterInputAmount * numerator) / denominator;
+                document.getElementById('coffee-amount').value = coffeeAmountCalculated.toFixed(2);
+            } else {
+                document.getElementById('error-message').innerText = 'Please enter a valid amount for either coffee or water.';
+            }
+        });
+    </script>
+</html>
