@@ -25,18 +25,21 @@ select {
     margin-left: 5%;
     width: 15%;
     height: 5%;
+    max-width: 200px;
 }
 
 label {
     width: 25%;
     display: inline-block;
     text-align: left;
+    max-width: 250px;
 }
 
 input {
-    height: 7%;
+    height: 5%;
     width: 15%;
     margin-left: 5%;
+    max-width: 200px;
 }
 
 div {
@@ -49,5 +52,6 @@ button {
     border-radius: 5px;
     background-color: rgb(27,27,27);
     color: rgb(255,255,255);
-    width: 35vw
+    width: 35vw;
+    max-width: 200px;
 }
