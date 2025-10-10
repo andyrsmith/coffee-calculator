@@ -1,5 +1,7 @@
 # Coffee Calculator
 
+[Website Link](https://coffee-calc.com)
+
 ## Intro
 
 A simple website where you select the your desire coffee ratio and then enter either the amount of coffee in grams or amount of water in ml.  Then it will list either the amount of water or amount of coffee you should add depending on what you enter.
